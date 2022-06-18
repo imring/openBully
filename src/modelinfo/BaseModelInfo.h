@@ -39,8 +39,8 @@ public:
 	virtual void SetModelName(char const *name);
 	virtual void Shutdown(void);
 	virtual void DeleteRwObject(void) = 0;
-	virtual int *CreateInstance(void) = 0; //TODO: replace with RwObject *
-	virtual int *GetRwObject(void) = 0; //TODO: replace with RwObject *
+	virtual RwObject *CreateInstance(void) = 0;
+	virtual RwObject *GetRwObject(void) = 0;
 	virtual void SetAnimFile(char const *name) = 0;
 	virtual int32_t GetAnimFileIndex(void) { return -1; }
 	virtual int32_t GetAnimFile2Index(void) { return -1; }

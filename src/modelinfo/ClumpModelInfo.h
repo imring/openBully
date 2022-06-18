@@ -14,8 +14,8 @@ public:
 
 	~CClumpModelInfo();
 	void DeleteRwObject(void);
-	int *CreateInstance(void) { return nullptr; }; //TODO: replace with RwObject *
-	int *GetRwObject(void) { return nullptr; }; //TODO: replace with RwObject *
+	RwObject *CreateInstance(void) { return nullptr; };
+    RwObject *GetRwObject(void) { return nullptr; };
 	void SetAnimFile(char const *file) {};
 
 	virtual int GetAnimFileIndex(void) { return m_animFileIndex; }
