@@ -10,6 +10,7 @@ void TextParser::InjectHooks() {
 	inject_hook(0x61A350, &TextParser::MatchCurrentTokenCaseInsensitive);
 	inject_hook(0x61A450, &TextParser::PushReadPosition);
 	inject_hook(0x61A460, &TextParser::PopReadPosition);
+    inject_hook(0x61A560, static_cast<void(TextParser::*)(const char*)>(&TextParser::advanceToToken));
 	inject_hook(0x61A590, &TextParser::GetTokenAsInt);
 	inject_hook(0x61A5C0, &TextParser::GetTokenAsFloat);
 	//inject_hook(0x61A3B0, &TextParser::copyTokenToBuffer);
@@ -20,7 +21,7 @@ TextParser::TextParser(char const *str, char const *delim) {
 	m_copyStr = str;
 	m_size = 0;
 	
-	memset(&m_delim[0], 0, sizeof(m_delim[0]) * MAX_DELIM_SIZE);
+	memset(m_delim, 0, sizeof(m_delim[0]) * MAX_DELIM_SIZE);
 	strncpy_s(m_delim, delim, strlen(delim));
 	advanceToToken();
 }
@@ -40,8 +41,8 @@ void TextParser::advanceToToken(void) {
 }
 
 void TextParser::advanceToToken(char const *token) {
-	while (*m_str && !TextParser::MatchCurrentToken(token))
-		++m_str;
+	while (*m_str && !MatchCurrentToken(token))
+		GetNextToken();
 }
 
 void TextParser::advanceToSeparator(void) {
@@ -56,7 +57,7 @@ void TextParser::GetNextToken(void) {
 	advanceToToken();
 }
 
-bool TextParser::MatchCurrentToken(char const *token) {
+bool TextParser::MatchCurrentToken(const char *token) {
 	const char *copy = m_str;
 	while (*token) {
 		if (*token != *copy) {

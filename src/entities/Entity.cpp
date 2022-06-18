@@ -13,7 +13,7 @@ void CEntity::InjectHooks() {
 	inject_hook(0x4656A0, &CEntity::Constructor<>);
 
 	inject_hook(0x450880, &CEntity::RegisterReference);
-	// inject_hook(0x4508D0, &CEntity::CleanUpOldReference);
+	inject_hook(0x4508D0, &CEntity::CleanUpOldReference);
 	inject_hook(0x450910, &CEntity::ResolveReferences);
 	inject_hook(0x450970, &CEntity::PruneReferences);
 	inject_hook(0x465780, &CEntity::HasPreRenderEffects);
@@ -139,8 +139,7 @@ void CEntity::RegisterReference(CEntity **ppEntity) {
 }
 
 void CEntity::CleanUpOldReference(CEntity **ppEntity) {
-	XCALL(0x4508D0);
-	/*if (!m_pReferences)
+	if (!m_pReferences)
 		return;
 
 	CReference *ref = m_pReferences;
@@ -150,10 +149,10 @@ void CEntity::CleanUpOldReference(CEntity **ppEntity) {
 		ref = ref->m_pNext;
 		if (!ref)
 			return;
-		*pref = ref->m_pNext;
-		ref->m_pNext = CReferences::pEmptyList;
-		CReferences::pEmptyList = ref;
-	}*/
+	}
+    *pref = ref->m_pNext;
+    ref->m_pNext = CReferences::pEmptyList;
+    CReferences::pEmptyList = ref;
 }
 
 void CEntity::ResolveReferences() {
