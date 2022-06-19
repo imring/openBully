@@ -202,6 +202,20 @@ bool CEntity::HasPreRenderEffects() {
 
 void CEntity::DeleteRwObject() {
 	XCALL(0x4667A0);
+
+#if 0
+    if (GetMatrix())
+        GetMatrix()->m_pAttachMatrix = nullptr;
+    if (m_pRwObject) {
+        // ...
+        m_pRwObject = nullptr;
+        CModelInfo::GetModelInfo(m_nModelIndex)->RemoveRef();
+        // ...
+    }
+    if (m_nModelIndex != -1) {
+        // ...
+    }
+#endif
 }
 
 void CEntity::ProcessLightsForEntity() {
