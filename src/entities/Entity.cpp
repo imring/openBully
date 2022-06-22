@@ -5,8 +5,6 @@
 #include "References.h"
 #include "ModelIndices.h"
 
-short &g_FakeRTTI_ID = memory::read<short>(0xBF3830);
-
 void CEntity::InjectHooks() {
 	using namespace memory::hook;
 

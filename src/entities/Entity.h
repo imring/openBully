@@ -4,6 +4,7 @@
 #include "References.h"
 #include "CollisionType.h"
 #include "rwplcore.h"
+#include "common.h"
 
 class AM_RenObj;
 class CRect;
@@ -160,8 +161,6 @@ public:
 	static short GetCEntity();
 	static void InjectHooks();
 };
-
-extern short &g_FakeRTTI_ID;
 
 void HelperCleanupOldReference(CEntity *pEntity, CEntity **ppEntity);
 void HelperRegisterReference(CEntity *pEntity, CEntity **ppEntity);

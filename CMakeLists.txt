@@ -11,6 +11,7 @@ endif()
 file(GLOB_RECURSE PROJECT_FILES "src/*.h" "src/*.cpp")
 
 add_library(openBully SHARED ${PROJECT_FILES})
+target_compile_definitions(openBully PRIVATE WINDOWED_MODE)
 target_include_directories(openBully PRIVATE
   src
     src/animation

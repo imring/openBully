@@ -1,0 +1,12 @@
+BasedOnStyle: LLVM
+IndentWidth: 4
+AccessModifierOffset: -4
+AlignEscapedNewlines: Left
+AlwaysBreakTemplateDeclarations: Yes
+SpaceBeforeRangeBasedForLoopColon: false
+UseTab: Never
+SortIncludes: Never
+AllowShortFunctionsOnASingleLine: Empty
+IndentWrappedFunctionNames: false
+AlwaysBreakAfterDefinitionReturnType: None
+ColumnLimit: 120
