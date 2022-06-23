@@ -3,7 +3,7 @@
 CBaseModelInfo *(&CModelInfo::ms_modelInfoPtrs)[MODELINFOSIZE]
 	= *reinterpret_cast<CBaseModelInfo *(*)[MODELINFOSIZE]>(0xC67738);
 
-int CModelInfo::Butes(int idx) {
+ObjectButes *CModelInfo::Butes(int idx) {
 	XCALL(0x51B450);
 }
 

@@ -14,6 +14,6 @@ public:
 		return ms_modelInfoPtrs[modelId];
 	}
 
-	static int Butes(int idx);
+	static ObjectButes *Butes(int idx);
 	static CColModel *GetColModel(const CEntity *pEntity);
 };
